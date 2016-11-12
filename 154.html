@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,ul{
+				margin: 0;
+				padding: 0;
+			}
+			ul{
+				position: absolute;
+			top:-1220px;
+			left:50px;
+				width:195px;
+				list-style: none;
+				background: green;
+			}
+			li{
+				width:65px;
+				height:100px;
+				float: left;
+				background: red;
+			}
+			.black{
+				background: black;
+			}
+			.div1{
+				position: relative;
+				background:yellow;
+				width:300px;
+				height: 400px;
+				overflow: hidden;
+			}
+		</style>
+		<script>
+			window.onload=function(){
+				var fen=-1;
+				var but1=document.getElementById('button1');
+				var but2=document.getElementById('button2');
+				var aa=15;
+				var arr=new Array();
+				var oli=document.getElementsByTagName("li");
+				var oul=document.getElementsByTagName("ul")[0];
+				var div=oul.getElementsByTagName("div");
+				for(var i=0;i<2;i++){
+					oul.innerHTML=oul.innerHTML+oul.innerHTML;
+				}
+				for(var i=0;i<16;i++){
+					div[i].onclick=function(e){
+					alert("你输了,得分为"+fen);
+					clearInterval(time);
+					location.reload(false);
+				}
+					arr[i]=parseInt(Math.ceil(3*Math.random()+3*i-1));
+					oli[arr[i]].className='black';
+				}
+				function abc(){
+					clearInterval(time);
+					fen++;
+					bb--;
+				oli[arr[aa]].onclick=function(e){
+					
+					this.style.background="white";
+						if(e.stopPropagation){
+		         	e.stopPropagation();
+		         }else{
+		         	e.cancelBubble=true;
+		         }
+		         aa--;
+		         abc();
+		         time=setInterval(function(){
+					oul.style.top=oul.offsetTop+1+"px";
+					if(oul.offsetTop==0){
+						clearInterval(time);
+					}
+				},bb)
+		         if(fen==15){
+						alert("你赢了");location.reload(false);
+					}
+		         
+				}
+				
+				}
+				abc();
+				var bb=10;
+				var time;
+				}
+			
+				
+		</script>
+	</head>
+	<body>
+		<div class="div1">
+			<ul>
+				<div>
+				<li></li>
+				<li></li>
+				<li></li>
+				</div>
+				<div>
+				<li></li>
+				<li></li>
+				<li></li>
+				</div>
+				<div>
+				<li></li>
+				<li></li>
+				<li></li>
+				</div>
+				<div>
+				<li></li>
+				<li></li>
+				<li></li>
+				</div>
+			</ul>
+		</div>
+	</body>
+</html>
